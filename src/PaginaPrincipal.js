@@ -1,16 +1,30 @@
 import styled from 'styled-components';
-import imagem from './assets/DMC5_Dante.webp';
+import fundo from './assets/fundo.png';
+import Card from './Card'
+import Personagem from './Personagem'
+
+var autor = "Dante";
+var frase = `Lorem ipsum dolor sit amet,
+consectetur adipiscing elit. Cras porttitor
+a nisi at maximus. Donec porta erat et ipsum
+placerat semper. Donec finibus posuere turpis
+nec dapibus. In hac habitasse platea dictumst.
+Vestibulum at faucibus odio, quis mollis metus.
+Donec accumsan consectetur libero, et vestibulum
+elit tempus sit amet. Aenean sed lacinia nulla.
+Nulla vitae consectetur lectus. In hac habitasse
+platea dictumst.`;
 
 function PaginaPrincipal() {
     return(
         <Content>
-            <Mensagem>
-                <span>Texto</span>
-                    <button>Botão</button>
-            </Mensagem>
-            <Personagem>
-                <img src={imagem} alt="Dante"></img>
-            </Personagem>
+            <ContainerMensagem>
+                <Card frase={frase} autor={autor}/>
+                <GerarQuote>Gerar nova frase</GerarQuote>
+            </ContainerMensagem>
+            <ContainerPersonagem>
+                <Personagem nomePersonagem={autor}/>
+            </ContainerPersonagem>
         </Content>
     );
 };
@@ -19,38 +33,27 @@ const Content = styled.div`
     display: flex;
     flex-direction: row;
     height: 100vh;
+    background-image: url(${fundo});
+    background-size: cover;
 `;
 
-const Mensagem = styled.div`
-    display: flex;
-    flex-direction: column;
-    font-size: 50px;
-    width: 50%;
-    margin: auto 0;
-
-    span {
-        text-align: center;
-    }
-
-    button {
-        font-size: 30px;
-        height: 10vh;
-        width: 50%;
-        margin: 0 auto;
-    }
-`;
-
-const Personagem = styled.div`
+const ContainerMensagem = styled.div`
     display: flex;
     flex-direction: column;
     width: 50%;
+    justify-content: center;
+`;
 
-    img {
-        height: 100vh;
-        object-fit: cover;
-        object-position: 0 -20%;
-        width: 30vw;
-    }
+const GerarQuote = styled.button`
+    margin: 2vh auto;
+    font-family: Arial;
+    font-size: 1.2em;
+    padding: 4px;
+`;
+const ContainerPersonagem = styled.div`
+    display: flex;
+    flex-direction: column;
+    width: 50%;
 `;
 
 export default PaginaPrincipal;
