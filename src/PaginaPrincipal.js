@@ -40,6 +40,12 @@ const Content = styled.div`
     height: 100vh;
     background-image: url(${fundo});
     background-size: cover;
+
+    @media only screen and (hover: none) and (pointer: coarse){
+        flex-direction: column;
+        background-size: cover;
+        background-position: center;
+    }
 `;
 
 const ContainerMensagem = styled.div`
@@ -47,6 +53,12 @@ const ContainerMensagem = styled.div`
     flex-direction: column;
     width: 50%;
     justify-content: center;
+
+    @media only screen and (hover: none) and (pointer: coarse){
+        width: 100%;
+        margin: 20px 0;
+        height: 25%;
+    }
 `;
 
 const GerarFrase = styled.button`
@@ -68,11 +80,26 @@ const GerarFrase = styled.button`
         background-color: darkred;
         transition: background-color 0.1s;
     }
+
+    @media only screen and (hover: none) and (pointer: coarse){
+        border: 1px solid gray;
+
+        &:active {
+            background-color: darkred;
+            transition: background-color 0s;
+        }
+    }
 `;
+
 const ContainerPersonagem = styled.div`
     display: flex;
     flex-direction: column;
     width: 50%;
+
+    @media only screen and (hover: none) and (pointer: coarse){
+        width: 100%;
+        height: 75%;
+    }
 `;
 
 export default PaginaPrincipal;

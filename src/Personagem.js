@@ -23,18 +23,31 @@ Personagem.propTypes = {
 const DivPersonagem = styled.div`
     height: 100vh;
     object-fit: cover;
+
+    @media only screen and (hover: none) and (pointer: coarse){
+        width: 100vw !important;
+        height: 75vh;
+    }
 `;
 
 const Dante = styled(DivPersonagem)`
     content: url(${ImgDante});
     object-position: 0 -20%;
     width: 30vw;
+
+    @media only screen and (hover: none) and (pointer: coarse){
+        object-position: 0 0;
+    }
 `;
 
 const Nero = styled(DivPersonagem)`
     content: url(${ImgNero});
     object-position: 0 5%;
     width: 30vw;
+
+    @media only screen and (hover: none) and (pointer: coarse){
+        object-position: 0 0;
+    }
 `;
 
 const Vergil = styled(DivPersonagem)`
@@ -42,6 +55,10 @@ const Vergil = styled(DivPersonagem)`
     object-position: 0 10%;
     margin-left: -7%;
     width: 34vw;
+
+    @media only screen and (hover: none) and (pointer: coarse){
+        object-position: 0 0;
+    }
 `;
 
 export default Personagem;
