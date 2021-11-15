@@ -1,26 +1,27 @@
 import styled from 'styled-components';
 import fundo from './assets/fundo.png';
+import { useState } from 'react';
 import Card from './Card'
 import Personagem from './Personagem'
-
-var autor = "Dante";
-var frase = `Lorem ipsum dolor sit amet,
-consectetur adipiscing elit. Cras porttitor
-a nisi at maximus. Donec porta erat et ipsum
-placerat semper. Donec finibus posuere turpis
-nec dapibus. In hac habitasse platea dictumst.
-Vestibulum at faucibus odio, quis mollis metus.
-Donec accumsan consectetur libero, et vestibulum
-elit tempus sit amet. Aenean sed lacinia nulla.
-Nulla vitae consectetur lectus. In hac habitasse
-platea dictumst.`;
+import frases from './frases';
 
 function PaginaPrincipal() {
+    let fraseInicial = selecionarFraseAleatoria();
+    const [frase, setFrase] = useState(fraseInicial.frase);
+    const [autor, setAutor] = useState(fraseInicial.autor);
+
+    function useGerarFrase() {
+        let fraseGerada = selecionarFraseAleatoria();
+
+        setAutor(fraseGerada.autor);
+        setFrase(fraseGerada.frase);
+    };
+
     return(
         <Content>
             <ContainerMensagem>
                 <Card frase={frase} autor={autor}/>
-                <GerarQuote>Gerar nova frase</GerarQuote>
+                <GerarFrase onClick={useGerarFrase}>Gerar nova frase</GerarFrase>
             </ContainerMensagem>
             <ContainerPersonagem>
                 <Personagem nomePersonagem={autor}/>
@@ -28,6 +29,10 @@ function PaginaPrincipal() {
         </Content>
     );
 };
+
+function selecionarFraseAleatoria(){
+    return frases[Math.floor(Math.random() * frases.length)];
+}
 
 const Content = styled.div`
     display: flex;
@@ -44,11 +49,25 @@ const ContainerMensagem = styled.div`
     justify-content: center;
 `;
 
-const GerarQuote = styled.button`
+const GerarFrase = styled.button`
     margin: 2vh auto;
     font-family: Arial;
     font-size: 1.2em;
-    padding: 4px;
+    color: white;
+    background-color: rgba(20, 20, 20, 0.8);
+    border: none;
+    border-radius: 10px;
+    padding: 6px;
+
+    &:hover {
+        background-color: red;
+        transition: background-color 0.3s;
+    }
+
+    &:active {
+        background-color: darkred;
+        transition: background-color 0.1s;
+    }
 `;
 const ContainerPersonagem = styled.div`
     display: flex;

@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { string } from 'prop-types';
 
 function Card(props) {
     return(
@@ -7,6 +8,11 @@ function Card(props) {
             <NomeAutor>- {props.autor}</NomeAutor>
         </CardDiv>
     );
+};
+
+Card.propTypes = {
+    frase: string,
+    autor: string
 };
 
 const Frase = styled.div`
